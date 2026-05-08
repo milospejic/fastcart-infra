@@ -8,5 +8,16 @@ resource "google_compute_subnetwork" "default" {
   ip_cidr_range = var.cidr_range
   region        = var.gcp_region
   network       = google_compute_network.default.self_link
+
+  secondary_ip_range = [
+    {
+      range_name    = "${var.subnet_name}-pods"
+      ip_cidr_range = var.pod_cidr_range
+    },
+    {
+      range_name    = "${var.subnet_name}-services"
+      ip_cidr_range = var.service_cidr_range
+    }
+  ]
 }
 

@@ -18,5 +18,8 @@ module "networking" {
   gcp_region = var.gcp_region
   vpc_name = "${var.prefix}-vpc"
   subnet_name = "${var.prefix}-subnet"
-  cidr_range = "10.0.0.0/24"
+  cidr_range         = "10.0.0.0/24"    
+  pod_cidr_range     = "10.1.0.0/16"   
+  service_cidr_range = "10.2.0.0/20"   
 }
+
