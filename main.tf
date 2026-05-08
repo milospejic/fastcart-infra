@@ -11,3 +11,12 @@ provider "google" {
     project = var.gcp_project
     region  = var.gcp_region
 }
+
+
+module "networking" {
+  source = "./modules/networking"
+  gcp_region = var.gcp_region
+  vpc_name = "${var.prefix}-vpc"
+  subnet_name = "${var.prefix}-subnet"
+  cidr_range = "10.0.0.0/24"
+}
