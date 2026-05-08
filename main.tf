@@ -35,3 +35,15 @@ module "cloud_sql" {
 
   depends_on = [module.networking]
 }
+
+module "artifact_registry" {
+  source     = "./modules/artifact_registry"
+  prefix     = var.prefix
+  gcp_region = var.gcp_region
+}
+
+module "gcs_frontend" {
+  source     = "./modules/gcs_frontend"
+  prefix     = var.prefix
+  gcp_region = var.gcp_region
+}
