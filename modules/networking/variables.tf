@@ -25,12 +25,12 @@ variable "cidr_range" {
 variable "pod_cidr_range" {
   description = "The CIDR range for the pods"
   type = string
-  default = "10.0.0.0/24"
+  default = "10.1.0.0/16"
 }
 
 variable "service_cidr_range" {
   description = "The CIDR range for the services"
   type = string
-  default = " 10.0.0.0/24"
+  default = " 10.2.0.0/20"
 }
   

@@ -1,1 +1,1 @@
-{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"networking","Source":"./modules/networking","Dir":"modules/networking"}]}
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"cloud_sql","Source":"./modules/cloud_sql","Dir":"modules/cloud_sql"},{"Key":"networking","Source":"./modules/networking","Dir":"modules/networking"}]}
