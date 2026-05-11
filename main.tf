@@ -47,3 +47,17 @@ module "gcs_frontend" {
   prefix     = var.prefix
   gcp_region = var.gcp_region
 }
+
+module "gke" {
+  source             = "./modules/gke"
+  prefix             = var.prefix
+  gcp_project        = var.gcp_project
+  gcp_region         = var.gcp_region
+  
+  vpc_name           = module.networking.network_name
+  subnet_name        = module.networking.subnet_name
+  pod_range_name     = module.networking.pod_range_name
+  service_range_name = module.networking.service_range_name
+  
+  depends_on         = [module.networking]
+}
