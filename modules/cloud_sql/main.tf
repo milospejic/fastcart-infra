@@ -56,3 +56,15 @@ resource "google_secret_manager_secret_version" "db_passwords_data" {
   secret      = google_secret_manager_secret.db_passwords[each.key].id
   secret_data = random_password.db_passwords[each.key].result
 }
+
+resource "google_secret_manager_secret" "db_host" {
+  secret_id = "${var.prefix}-db-host"
+  replication {
+    auto {}
+  }
+}
+
+resource "google_secret_manager_secret_version" "db_host_data" {
+  secret      = google_secret_manager_secret.db_host.id
+  secret_data = google_sql_database_instance.default.private_ip_address
+}

@@ -23,6 +23,12 @@ resource "google_project_iam_member" "gke_nodes_artifact_reader" {
   member  = "serviceAccount:${google_service_account.default.email}"
 }
 
+resource "google_project_iam_member" "gke_nodes_secret_accessor" {
+  project = var.gcp_project
+  role    = "roles/secretmanager.secretAccessor"
+  member  = "serviceAccount:${google_service_account.default.email}"
+}
+
 
 resource "google_container_cluster" "default" {
   name     = "${var.prefix}-cluster"
