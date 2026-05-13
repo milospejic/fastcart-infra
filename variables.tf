@@ -31,3 +31,8 @@ variable "tier" {
   type        = string
   default     = "db-f1-micro"
 }
+
+variable "github_repo" {
+  description = "GitHub repo in the format ORG/REPO "
+  type        = string
+}

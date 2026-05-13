@@ -61,3 +61,9 @@ module "gke" {
   
   depends_on         = [module.networking]
 }
+
+module "iam" {
+  source      = "./modules/iam"
+  gcp_project = var.gcp_project
+  github_repo = var.github_repo
+}
