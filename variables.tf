@@ -17,7 +17,7 @@ variable "prefix" {
 variable "microservices" {
   description = "List of microservices that need a database"
   type        = set(string)
-  default     = ["users", "products", "orders", "cart", "payments"]
+  default     = ["auth", "product", "order", "review", "payment"]
 }
 
 variable "database_version" {

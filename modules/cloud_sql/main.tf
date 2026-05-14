@@ -17,7 +17,7 @@ resource "google_sql_database_instance" "default" {
     ip_configuration {
       ipv4_enabled    = false       
       private_network = var.vpc_id 
-      require_ssl     = true
+      require_ssl     = false
     }
   }
   
@@ -32,7 +32,7 @@ resource "google_sql_database" "default" {
 resource "random_password" "db_passwords" {
   for_each = var.microservices
   length   = 16
-  special  = true
+  special  = false
 }
 
 resource "google_sql_user" "users" {
