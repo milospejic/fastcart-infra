@@ -58,6 +58,10 @@ resource "google_container_cluster" "default" {
       disabled = false 
     }
   }
+
+  gateway_api_config {
+    channel = "CHANNEL_STANDARD"
+  }
 }
 
 
@@ -67,6 +71,13 @@ resource "google_container_node_pool" "default" {
   cluster    = google_container_cluster.default.name
   node_count = 1 
 
+  lifecycle {
+    ignore_changes = [
+      node_count,
+      node_config[0].resource_labels,
+      node_config[0].kubelet_config
+    ]
+  }
   autoscaling {
     min_node_count = 1
     max_node_count = 3
