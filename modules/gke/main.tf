@@ -29,6 +29,16 @@ resource "google_project_iam_member" "gke_nodes_secret_accessor" {
   member  = "serviceAccount:${google_service_account.default.email}"
 }
 
+resource "google_service_account_iam_member" "external_secrets_workload_identity" {
+  service_account_id = google_service_account.default.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${var.gcp_project}.svc.id.goog[external-secrets/external-secrets]"
+}
+resource "google_project_iam_member" "gke_nodes_trace_agent" {
+  project = var.gcp_project
+  role    = "roles/cloudtrace.agent"
+  member  = "serviceAccount:${google_service_account.default.email}"
+}
 
 resource "google_container_cluster" "default" {
   name     = "${var.prefix}-cluster"
